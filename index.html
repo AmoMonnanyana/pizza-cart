@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    <main x-data="{pizza1: false, 
+        pizza2: false, pizza3: false, cost1: 0, cost2: 0, cost3: 0, total: 0, 
+        totalCost: false, payment: false, placeholder: '', pay: '', amount: 0 }">
+        <h1>Perfect Pizza</h1>
+        
+        <section class="pizzaBox cart">
+            <h2>Shopping Cart</h2>
+        <section>
+           <p>
+            <div x-show="pizza1"> Small pizza</div>
+            
+            <template x-if="pizza1 == true">
+                <button x-on:click="cost1 =cost1 + 39.99">+</button>
+                </template>
+                <template x-if="pizza1 == true">
+                <button x-on:click="cost1 = cost1 - 39.99">-</button>
+            </template>
+            
+           <template x-if="cost1 > 0"> <div x-text="cost1.toFixed(2)"></div></template> 
+           <template x-if="pizza1==true">
+                <button x-on:click="pizza1=false; cost1=!cost1; payment=false">Remove from cart</button>
+           </template> 
+            </p>
+
+           <p>
+            <div x-show="pizza2"> Medium pizza</div>
+            
+            <template x-if="pizza2 == true">
+                <button x-on:click="cost2=cost2 + 78.99">+</button>
+                </template>
+                <template x-if="pizza2 == true">
+                <button x-on:click="cost2 = cost2 - 78.99">-</button>
+            </template>
+            
+           <template x-if="cost2 > 0"> <div x-text="cost2.toFixed(2)"></div></template> 
+           <template x-if="pizza2==true">
+                <button x-on:click="pizza2=false; cost2=!cost2; payment=false">Remove from cart</button>
+           </template> 
+           </p>
+
+            <p>
+                <div x-show="pizza3"> Large pizza</div>
+            
+                <template x-if="pizza3 == true">
+                    <button x-on:click="cost3=cost3 + 109.99">+</button>
+                    </template>
+                    <template x-if="pizza3 == true">
+                    <button x-on:click="cost3 = cost3 - 109.99">-</button>
+                </template>
+                
+               <template x-if="cost3 > 0"> <div x-text="cost3.toFixed(2)"></div></template> 
+               <template x-if="pizza3==true">
+                    <button  x-on:click="pizza3=false; cost3=!cost3; payment=false">Remove from cart</button>
+               </template>    
+            </p>
+
+                <div x-show="total = cost1 + cost2 + cost3">Total Cost</div>
+            <template x-if="total > 0"><div x-text="total.toFixed(2)"></div></template>
+
+            <p>
+              <template x-if="total > 0">  
+                <button x-on:click="payment=!payment">checkout</button>
+              </template> 
+              <section  x-show="payment">Enter payment amount <input  type="integer" x-model="pay"> 
+                <button x-on:click="amount = pay">pay</button>
+               <p>
+                
+             <template  x-if="amount > total">
+                <p  x-show="payment" x-init="setTimeout(function(){
+                    // set all the totals to 0
+                    // alert('clearing cart!')
+                    pizza1 = false; pizza2= false; pizza3 = false
+                    cost1 = 0; cost2 = false; cost3 = 0;
+                    total = 0;
+                    payment= false;
+                    pay = '';
+                    amount = 0;  
+                   
+                  }, 3000)"> <strong>Enjoy your Pizzas!</strong></p>
+              </template>
+              <template x-if="amount < total && amount != 0">
+                <p x-ref="retry" x-ref="content" x-model="pay =''" x-init ="setTimeout(function delay(){
+                    $refs.retry.innerText='Try Again!'
+                }, 3000)" > <strong>Sorry - that is not enough money!</strong></p>
+              </template></p>
+            </section>
+             
+            </p>
+        </section>
+         </section>
+         
+
+         <section class="box">
+         <Section class="pizzaBox small">
+            <img src="pizza.png" width="100" align="right">
+            <h2>Small Pizza</h2>
+                <p class="price">R39.99</p>
+               <div>
+                <p>Small margherita pizza with 3 toppings max. 1 or less meat toppings. 2 or less other toppings. Single cheese</p>
+                </div>
+                <button x-on:click="pizza1=true; cost1=39.99">Buy</button>
+            </Section>
+
+            <Section class="pizzaBox medium">
+                <img src="pizza.png" width="130" align="right">
+                <h2>Medium Pizza</h2>
+                    <p class="price">R78.99</p>
+                   <div>
+                    <p>Medium margherita pizza with 3 toppings max. 2 or less meat toppings. 3 or less other toppings. Single cheese</p>
+                   </div>
+
+                   <button x-on:click="pizza2=true; cost2=78.99">Buy</button>
+                </Section>
+
+                    <Section class="pizzaBox large">
+                        <img src="pizza.png" width="180" align="right">
+                        <h2>Large Pizza</h2>
+                        <p class="price">R109.99</p>
+                        <div>
+                        <p>Large margherita pizza with 3 toppings max. 3 or less meat toppings. 3 or less other toppings. Double cheese</p>
+                        </div>
+        
+                            
+                        <button x-on:click="pizza3=true; cost3=109.99">Buy</button>
+        
+                    </Section>
+
+        </section>
+            <section class="pizzaBox contacts">
+                <h2>Contact Details</h2>
+                <h3>Contact us at:</h3>
+                    <p class="details">Telephone: 011 340 3421</p>
+                   <p class="details">Email: info@perfectpizza.co.za</p>
+                    <p class="details">Address: 21 Pizza Plaza,Church road, Zeerust, 1860</p>
+            </section>
+    </main>
+</body>
+</html>
