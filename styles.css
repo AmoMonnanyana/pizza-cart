@@ -4,7 +4,10 @@ body{
 }
 .cart {
     background-color: yellow;
-    text-align: center
+    text-align: center;
+}
+.warning {
+    text-emphasis-color: red;
 }
 
 .large {
