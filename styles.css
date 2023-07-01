@@ -1,26 +1,29 @@
 body{
-    background-color: aqua;
+    background-color: gold;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .cart {
-    background-color: yellow;
+    background-color: rgb(252, 230, 250);
     text-align: center;
 }
 .warning {
-    text-emphasis-color: red;
+    color: red;
+}
+.success {
+    color: rgb(114, 228, 21);
 }
 
 .large {
-    background-color: chocolate;
+    background-color: aqua;
 }
 .medium {
-    background-color:darkgoldenrod;
+    background-color:fuchsia;
 }
 .small {
-    background-color:crimson;
+    background-color:red
 }
 .contacts {
-    background-color:darkslateblue;
+    background-color:greenyellow;
 }
 .pizzaBox {
     border: 1px solid;

@@ -76,7 +76,7 @@
                <p>
                 
              <template  x-if="amount > total">
-                <p  x-show="payment" x-init="setTimeout(function(){
+                <p class="success" x-show="payment" x-init="setTimeout(function(){
                     // set all the totals to 0
                     // alert('clearing cart!')
                     pizza1 = false; pizza2= false; pizza3 = false
@@ -89,9 +89,9 @@
                   }, 3000)"> <strong>Enjoy your Pizzas!</strong></p>
               </template>
               <template x-if="amount < total && amount != 0">
-                <p x-ref="retry" x-ref="content" x-model="pay =''" x-init ="setTimeout(function delay(){
+                <strong><p class="warning" x-ref="retry" x-ref="content" x-model="pay =''" x-init ="setTimeout(function delay(){
                     $refs.retry.innerText='Try Again!'
-                }, 3000)" > <strong>Sorry - that is not enough money!</strong></p>
+                }, 3000)" > >Sorry - that is not enough money!</p></strong>
               </template></p>
             </section>
              
